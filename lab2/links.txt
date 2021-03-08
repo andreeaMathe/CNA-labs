@@ -1,0 +1,4 @@
+https://grpc.io/docs/languages/python/
+https://grpc.io/docs/languages/java/quickstart/
+
+collection of gitignore files: https://github.com/github/gitignore
