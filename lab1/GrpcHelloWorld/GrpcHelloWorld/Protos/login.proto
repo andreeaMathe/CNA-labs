@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcHelloWorld.Protos";
+
+package login;
+
+service Login {
+  rpc Login (LoginRequest) returns (LoginReply);
+}
+
+message LoginRequest {
+  string name = 1;
+}
+
+message LoginReply {
+  string message = 1;
+}

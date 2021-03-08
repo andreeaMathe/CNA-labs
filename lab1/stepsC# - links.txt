@@ -1,0 +1,5 @@
+set-up C# gRPC from official docs: https://grpc.io/docs/languages/csharp/quickstart/
+download .Net Core -> https://dotnet.microsoft.com/download -> .Net Core, sdk
+official examples: https://github.com/grpc/grpc
+
+starting point for the example from class: https://docs.microsoft.com/en-us/aspnet/core/tutorials/grpc/grpc-start?view=aspnetcore-5.0&tabs=visual-studio
