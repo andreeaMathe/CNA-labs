@@ -6,7 +6,7 @@ namespace BookService.DataAccess
 {
     public class BookOperations
     {
-        private readonly String filePath = "./Resources/books.txt";
+        private readonly string filePath = "./Resources/books.txt";
 
         public bool AddBook(Book book)
         {
@@ -33,7 +33,7 @@ namespace BookService.DataAccess
         {
             var books = new List<Book>();
 
-            String line;
+            string line;
             try
             {
                 StreamReader sr = new StreamReader(filePath);

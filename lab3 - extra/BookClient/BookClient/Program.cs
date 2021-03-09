@@ -13,7 +13,9 @@ namespace BookClient
             var client = new Bookstore.BookstoreClient(channel);
 
             //add new book
-            var bookToBeAdded = new Book() { Title = "Poems" };
+            Console.Write("title: ");
+            var title = Console.ReadLine();
+            var bookToBeAdded = new Book() { Title = title.Trim().Length > 0 ? title : "undefined" };
             var response = await client.AddBookAsync(
                               new AddBookRequest { Book = bookToBeAdded });
             Console.WriteLine("Adding status: " + response.Status);
