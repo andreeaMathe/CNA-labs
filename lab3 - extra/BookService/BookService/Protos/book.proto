@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option csharp_namespace = "BookService";
+import "google/protobuf/empty.proto";
+
+package bookstore;
+
+service Bookstore {
+	rpc AddBook(AddBookRequest) returns (AddBookResponse);
+	rpc GetAllBooks(google.protobuf.Empty) returns (GetAllBooksResponse);
+}
+
+message AddBookRequest{
+	Book book = 1;
+}
+
+message AddBookResponse{
+	Status status = 1;	
+
+	enum Status{
+		SUCCESS = 0;
+		ERROR = 1;
+	}
+}
+
+message GetAllBooksResponse{
+	repeated Book books = 1;
+}
+
+
+message Book {
+	string title = 1;
+	string year = 2;
+	Author author = 3;
+}
+
+message Author {
+	string name = 1;
+}
+
