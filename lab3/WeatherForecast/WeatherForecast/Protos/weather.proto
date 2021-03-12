@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "WeatherForecast";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+service WeatherForecasts{
+	rpc GetWeatherStream (google.protobuf.Empty) returns (stream WeatherData);
+}
+
+message WeatherData{
+	google.protobuf.Timestamp dateTimeStamp = 1;
+	double degreesCelsius = 2;
+	double precipitation = 3;
+	double humidity = 4;
+}
