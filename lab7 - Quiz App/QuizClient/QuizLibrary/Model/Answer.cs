@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace QuizLibrary.Model
 {
@@ -19,7 +17,7 @@ namespace QuizLibrary.Model
 
         public override string ToString()
         {
-            return "bla bla";
+            return $"{Id} + {Description}";
         }
     }
 }

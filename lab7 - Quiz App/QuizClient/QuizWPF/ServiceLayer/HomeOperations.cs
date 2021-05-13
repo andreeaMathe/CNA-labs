@@ -1,8 +1,5 @@
 ﻿using QuizWPF.ViewModel;
 using QuizWPF.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 
 namespace QuizWPF.ServiceLayer
@@ -11,18 +8,18 @@ namespace QuizWPF.ServiceLayer
     {
         public void StartQuiz(object param)
         {
-            var questionVM = new QuestionViewModel();
-            var window = new QuizMainWindow() { DataContext = questionVM };
-            window.ShowDialog();
+            var homeWindow = param as Window;
+            homeWindow.Hide();
 
-            //var homeWindow = param as Window;
-            //homeWindow.Close();
+            var questionVM = new QuestionViewModel();
+            var questionWindow = new QuizMainWindow() { DataContext = questionVM };
+            questionWindow.ShowDialog();
+            homeWindow.Owner = questionWindow;
         }
 
         public void Exit(object param)
         {
             Application.Current.Shutdown();
-            //Application.Current.Dispatcher.Invoke(Application.Current.Shutdown);
         }
     }
 }

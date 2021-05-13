@@ -24,19 +24,9 @@ namespace QuizLibrary.Requests
             return receivedQuestion;
         }
 
-        //public async Task SendSelectedAnswer(Answer selectedAnswer)
-        //{
-        //    var client = new GrpcServiceProvider().GetQuizClient();
-        //    var reply = await client.SubmitAnswersAsync(
-        //                      new QuizProto.SubmitAnswersRequest { Question });
-
-        //    var protoQuestion = reply.Question;
-
-        //    //var answers = protoQuestion.Answers
-        //    var answers = new List<Answer>() { new Answer(1, "x"), new Answer(2, "qwert") };
-        //    var receivedQuestion = new Question(protoQuestion.Id, protoQuestion.Content, answers);
-
-        //    return receivedQuestion;
-        //}
+        public async Task SendSelectedAnswer(Answer selectedAnswer)
+        {
+            //similar to RequestCurrentQuestion
+        }
     }
 }

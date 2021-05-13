@@ -3,14 +3,7 @@ using QuizLibrary.Requests;
 using QuizWPF.Commands;
 using QuizWPF.Extensions;
 using QuizWPF.ServiceLayer;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace QuizWPF.ViewModel
@@ -27,7 +20,7 @@ namespace QuizWPF.ViewModel
             var clientRequest = new ClientRequest();
             var receivedQuestion = await clientRequest.RequestCurrentQuestion(1);
 
-            Answers = receivedQuestion.Answers/*.Select(a => a.Description)*/.ToObservableCollection();
+            Answers = receivedQuestion.Answers.ToObservableCollection();
             QuestionDescription = receivedQuestion.Description;
         }
 
