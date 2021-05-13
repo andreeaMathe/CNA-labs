@@ -13,11 +13,11 @@ using System.Windows.Shapes;
 namespace QuizWPF.Views
 {
     /// <summary>
-    /// Interaction logic for Question.xaml
+    /// Interaction logic for QuizMainWindow.xaml
     /// </summary>
-    public partial class Question : UserControl
+    public partial class QuizMainWindow : Window
     {
-        public Question()
+        public QuizMainWindow()
         {
             InitializeComponent();
         }

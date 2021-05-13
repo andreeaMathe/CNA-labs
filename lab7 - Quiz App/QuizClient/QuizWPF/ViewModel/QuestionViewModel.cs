@@ -1,37 +1,60 @@
-﻿using QuizWPF.Commands;
+﻿using QuizLibrary.Model;
+using QuizLibrary.Requests;
+using QuizWPF.Commands;
+using QuizWPF.Extensions;
 using QuizWPF.ServiceLayer;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace QuizWPF.ViewModel
 {
-    class QuestionViewModel : INotifyPropertyChanged
+    class QuestionViewModel : BasePropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
+        public QuestionViewModel()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            InitializeQuestion();
         }
 
-        private string question;
-        public string Question
+        private async void InitializeQuestion()
         {
-            get { return question; }
+            var clientRequest = new ClientRequest();
+            var receivedQuestion = await clientRequest.RequestCurrentQuestion(1);
+
+            Answers = receivedQuestion.Answers/*.Select(a => a.Description)*/.ToObservableCollection();
+            QuestionDescription = receivedQuestion.Description;
+        }
+
+        private string questionDescription;
+        public string QuestionDescription
+        {
+            get { return questionDescription; }
             set
-            { 
-                question = value;
-                NotifyPropertyChanged(nameof(Question));
+            {
+                questionDescription = value;
+                NotifyPropertyChanged(nameof(QuestionDescription));
             }
         }
 
-        private ObservableCollection<string> answers;
-        public ObservableCollection<string> Answers
+        private Answer selectedAnswer;
+        public Answer SelectedAnswer
+        {
+            get { return selectedAnswer; }
+            set
+            {
+                selectedAnswer = value;
+                NotifyPropertyChanged(nameof(SelectedAnswer));
+            }
+        }
+
+        private ObservableCollection<Answer> answers;
+        public ObservableCollection<Answer> Answers
         {
             get { return answers; }
             set
@@ -42,13 +65,14 @@ namespace QuizWPF.ViewModel
         }
 
         private ICommand submitPressed;
+
         public ICommand SubmitPressed
         {
             get 
             {
                 if(submitPressed == null)
                 {
-                    var operations = new Operations();
+                    var operations = new QuestionOperations();
                     submitPressed = new RelayCommand(operations.Submit);
                 }
                 return submitPressed; 

@@ -15,11 +15,12 @@ message GetQuestionRequest{
 
 message GetQuestionReply{
 	Question question = 1;
+	repeated Answer possibleAnswers = 2;
 }
 
 message SubmitAnswersRequest {
 	Question question = 1;
-	repeated Answer answers = 2;
+	repeated Answer selectedAnswers = 2;
 }
 
 message SubmitAnswersReply {

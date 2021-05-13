@@ -4,12 +4,12 @@ using System.Text;
 
 namespace QuizWPF.ServiceLayer
 {
-    class Operations
+    public class QuestionOperations
     {
+
         public void Submit(object param)
         {
-            //todo
-        }
 
+        }
     }
 }

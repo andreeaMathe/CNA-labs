@@ -7,19 +7,23 @@ namespace QuizWPF.Commands
 {
     internal class RelayCommand : ICommand
     {
-        private readonly Action<object> commandTask;
-        private readonly Predicate<object> canExecuteTask;
+        readonly Action<object> _execute;
+        readonly Predicate<object> _canExecute;
 
-        public RelayCommand(Action<object> commandTask)
+        public RelayCommand(Action<object> execute)
+            : this(execute, null)
         {
-            this.commandTask = commandTask ?? throw new ArgumentNullException(nameof(commandTask));
-            this.canExecuteTask = (object x) => true;
         }
 
-        public RelayCommand(Action<object> commandTask, Predicate<object> canExecuteTask)
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
-            this.commandTask = commandTask ?? throw new ArgumentNullException(nameof(commandTask));
-            this.canExecuteTask = canExecuteTask ?? throw new ArgumentNullException(nameof(canExecuteTask));
+            _execute = execute ?? throw new ArgumentNullException("execute");
+            _canExecute = canExecute;
+        }
+
+        public bool CanExecute(object parameters)
+        {
+            return _canExecute == null ? true : _canExecute(parameters);
         }
 
         public event EventHandler CanExecuteChanged
@@ -28,14 +32,9 @@ namespace QuizWPF.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public bool CanExecute(object parameter)
+        public void Execute(object parameters)
         {
-            return canExecuteTask != null && canExecuteTask(parameter);
-        }
-
-        public void Execute(object parameter)
-        {
-            commandTask(parameter);
+            _execute(parameters);
         }
     }
 }

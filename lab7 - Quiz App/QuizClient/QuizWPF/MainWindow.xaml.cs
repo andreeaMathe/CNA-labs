@@ -22,23 +22,9 @@ namespace QuizWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        //public MainWindow()
-        //{
-        //    InitializeComponent();
-        //}
-
-        //private void HelloClicked(object sender, RoutedEventArgs e)
-        //{
-        //    _ = CallGrpcService();
-        //}
-
-        //private async Task CallGrpcService()
-        //{
-        //var client = new GrpcServiceProvider().GetQuizClient();
-        //    //var reply = await client.SayHelloAsync(
-        //    //                  new HelloRequest { Name = "WPF client" });
-
-        //    //this.HelloMessage.Text = reply.Message;
-        //}
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
     }
 }
