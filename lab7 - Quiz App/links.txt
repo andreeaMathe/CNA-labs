@@ -2,3 +2,5 @@
 App specs: https://docs.google.com/document/d/1YUkpyU9TPXrtpH49PgUpI58-9F9zXXXLHurk53KsR58/edit?usp=sharing
 
 delegate types c#: https://stackoverflow.com/a/30234579/12675597
+
+mongo db bson : https://www.mongodb.com/json-and-bson
